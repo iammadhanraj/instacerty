@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 setup(
-    name="intacerty",
+    name="instacerty",
     version="0.1",
     description="A python package for generate your certificates instantly!",
     long_description=open("README.md").read(),
