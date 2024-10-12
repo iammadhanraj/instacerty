@@ -7,7 +7,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Madhanraj",
     author_email="madhanreigns312@gmail.com",
-    url="https://github.com/yourusername/my_package",
+    url="https://github.com/iammadhanraj/instacerty",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
