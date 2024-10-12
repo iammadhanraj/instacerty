@@ -4,7 +4,7 @@ from io import BytesIO
 import qrcode
 import tempfile
 import os
-from utils import *
+from .utils import *
 
 
 def generate_certificate(name,course,instructor,bg=None,is_badge=True,badge_img=None,is_signature=True,signature_img=None,save_path=None,certificate_number=None,issue_date=None):
