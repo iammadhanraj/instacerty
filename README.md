@@ -117,7 +117,7 @@ generate_certificate(
 - **issue_date (str, optional):** If you want to use custom **Issue Date** for your certificates , you can use this Parameter . Defaults to None.
 
 ### 2 . get_certy_number
-- This function for generate unique 12-Digit Alphanumeric Nymber
+- This function for generate unique 12-Digit Alphanumeric Number
 
 
 ## Other Packages
