@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 setup(
     name="instacerty",
-    version="1.0.0",
-    description="A python package for generate your certificates instantly!",
+    version="2.0.0",
+    description="A python package for generate your certificates/ID cards instantly!",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     author="Madhanraj",
@@ -21,9 +21,14 @@ setup(
         'pillow==10.4.0',
         'qrcode==8.0',
         'reportlab==4.2.5',
+        'python-barcode==0.15.1'
     ],
     include_package_data=True,
     package_data={
-        'instacerty': ['static/*'],
+        'instacerty': [
+            'static/*',
+            'id_card_generator/static/fonts/*',
+            'id_card_generator/static/templates/*',
+            ],
     },
 )

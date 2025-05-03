@@ -108,6 +108,6 @@ def generate_certificate(name,course,instructor,bg=None,is_badge=True,badge_img=
     # Remove temporary QR file (cleanup)
     temp_qr_file.close()
 
-    print(f'Certificate generated successfully!\nCertificate Number : {certificate_number}')
+    # print(f'Certificate generated successfully!\nCertificate Number : {certificate_number}')
 
-
+    return file_path
