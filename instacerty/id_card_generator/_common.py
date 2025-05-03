@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # DEFAULT_TEMPLATE_FRONT = os.path.join(BASE_DIR, "static","templates", "front_side_circle.png")
 DEFAULT_TEMPLATE_BACK = os.path.join(BASE_DIR, "static","templates", "back_side.png")
 LOGO_PATH = os.path.join(BASE_DIR, "static","templates", "company_logo.png")
-PROFILE_PIC_PATH = os.path.join(BASE_DIR, "static","templates", "Profile_pic.jpg")
+PROFILE_PIC_PATH = os.path.join(BASE_DIR, "static","templates", "Profile_Picture.png")
 
 COMPANY_LOGO_BACK_PATH = os.path.join(BASE_DIR, "static","templates", "back_company_logo.png")
 

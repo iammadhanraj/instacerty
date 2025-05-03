@@ -126,22 +126,24 @@ class EmployeeIDCardGenerator:
         """
 
         for label, value in data.items():
-            # Draw label (small text)
-            draw.text((x, y), label, font=self.fonts["label_font"], fill=fill)
 
-            # Calculate the height of label text to position the value correctly
-            label_bbox = draw.textbbox((0, 0), label, font=self.fonts["label_font"])
-            label_height = label_bbox[3] - label_bbox[1]
+            if value is not None:
+                # Draw label (small text)
+                draw.text((x, y), label, font=self.fonts["label_font"], fill=fill)
 
-            # Draw value (big text) below the label with extra spacing
-            draw.text((x, y + label_height + label_value_spacing), value, font=self.fonts["value_font"], fill=fill)
+                # Calculate the height of label text to position the value correctly
+                label_bbox = draw.textbbox((0, 0), label, font=self.fonts["label_font"])
+                label_height = label_bbox[3] - label_bbox[1]
 
-            # Calculate the height of the value text
-            value_bbox = draw.textbbox((0, 0), value, font=self.fonts["value_font"])
-            value_height = value_bbox[3] - value_bbox[1]
+                # Draw value (big text) below the label with extra spacing
+                draw.text((x, y + label_height + label_value_spacing), value, font=self.fonts["value_font"], fill=fill)
 
-            # Move y down for the next label-value pair with extra spacing
-            y += label_height + value_height + label_value_spacing + pair_spacing
+                # Calculate the height of the value text
+                value_bbox = draw.textbbox((0, 0), value, font=self.fonts["value_font"])
+                value_height = value_bbox[3] - value_bbox[1]
+
+                # Move y down for the next label-value pair with extra spacing
+                y += label_height + value_height + label_value_spacing + pair_spacing
 
 
     def __create_bar_code(self,employee_id):
@@ -209,13 +211,14 @@ class EmployeeIDCardGenerator:
         else:
             back_logo=None
 
-
         # Load profile picture (with transparency handling)
-        if os.path.exists(self.employee.profile_pic_path):
-            profile_pic = Image.open(self.employee.profile_pic_path).convert("RGBA")
-            profile_pic = profile_pic.resize((300, 300))  # Profile pic size
-        else:
-            profile_pic = PROFILE_PIC_PATH  # No profile pic available
+        if self.employee.profile_pic_path is not None:
+            if os.path.exists(self.employee.profile_pic_path):
+                profile_pic = Image.open(self.employee.profile_pic_path).convert("RGBA")
+                profile_pic = profile_pic.resize((300, 300))  # Profile pic size
+        else: # No profile pic available
+            profile_pic = Image.open(PROFILE_PIC_PATH ).convert("RGBA")
+            profile_pic = profile_pic.resize((300, 300))
 
         #get center position
         bar_img_width, bar_img_height = barcode_image.size
@@ -271,18 +274,19 @@ class EmployeeIDCardGenerator:
         if back_logo:
             logo_img_width, logo_img_height = back_logo.size
             logo_x_position = (CARD_SIZE[0] - logo_img_width) // 2
-            back_template.paste(back_logo, (logo_x_position, 100), back_logo.split()[3])
+            back_template.paste(back_logo, (logo_x_position, 90), back_logo.split()[3])
 
         date_info = {
             "Employee ID": self.employee.employee_id,
-            "Joined Date": self.employee.join_date.strftime("%d/%m/%Y"),
+            "Department": self.employee.department,
+            "Joined Date": self.employee.join_date, #self.employee.join_date.strftime("%d/%m/%Y") if self.employee.join_date else "N/A",
             "Emergency Number":self.employee.emegency_number,
             "Blood Group":self.employee.blood_group
         }
 
-        self.__draw_multiple_labels(back_draw, 150, 300, date_info, self.fonts["label_font"], self.fonts["value_font"])
+        self.__draw_multiple_labels(back_draw, 150, 280, date_info, self.fonts["label_font"], self.fonts["value_font"])
 
-        self.__draw_address(back_draw, self.company.company_address, 150, 600, font=self.fonts["company_address_font"])  # Draw formatted address
+        self.__draw_address(back_draw, self.company.company_address, 150, 670, font=self.fonts["company_address_font"])  # Draw formatted address
 
         front_output_path = os.path.join(self.customization.output_directory, f"{self.employee.employee_id}_{idcard_name_along}_Front.png")
         back_output_path = os.path.join(self.customization.output_directory, f"{self.employee.employee_id}_{idcard_name_along}_Back.png")

@@ -3,6 +3,7 @@ from datetime import*
 from .enums import ProfileShape
 from .import _common
 import os
+from instacerty.utils import get_save_directory
 
 @dataclass
 class Employee:
@@ -11,7 +12,8 @@ class Employee:
     designation: str
     phone: str
     email: str
-    join_date: date
+    department: str = None
+    join_date: str =None
     profile_pic_path: str = None
     emegency_number:str=None
     blood_group:str=None
@@ -48,7 +50,7 @@ class EmpCardCustomization:
         # Load Different Fonts with Different Sizes
 
         #Default assets Paths
-        default_template_front = _common.DEFAULT_FRONT_TEMPLATES[0] if profile_shape is None or profile_shape==ProfileShape.CIRCLE.value else _common.DEFAULT_FRONT_TEMPLATES[1] if profile_shape==ProfileShape.ROUNDED.value else _common.DEFAULT_FRONT_TEMPLATES[2] #DEFAULT_TEMPLATE_FRONT
+        default_template_front =  _common.DEFAULT_FRONT_TEMPLATES[1] if profile_shape==ProfileShape.ROUNDED.value else _common.DEFAULT_FRONT_TEMPLATES[2] if profile_shape==ProfileShape.SQUARE.value else _common.DEFAULT_FRONT_TEMPLATES[0] #DEFAULT_TEMPLATE_FRONT
         default_template_back =  _common.DEFAULT_TEMPLATE_BACK
         default_logo = _common.LOGO_PATH
         default_back_logo = _common.COMPANY_LOGO_BACK_PATH
@@ -68,7 +70,11 @@ class EmpCardCustomization:
             if user_input is None or user_input == "":
                 return ProfileShape.CIRCLE
             else:
-                return ProfileShape[user_input.upper()]
+                for shape in ProfileShape:
+                    if user_input.lower() == shape.value:
+                        return shape
+                else:
+                    return ProfileShape.CIRCLE
         except ValueError:
             return ProfileShape.CIRCLE
         
@@ -153,7 +159,7 @@ class EmpCardCustomization:
                 # print(f"[INFO] Created custom output directory: {custom_dir}")
             return custom_dir
         else:
-            if not os.path.exists(_common.DEFAULT_OUTPUT_DIR):
-                os.makedirs(_common.DEFAULT_OUTPUT_DIR)
-            return _common.DEFAULT_OUTPUT_DIR
+            if not os.path.exists(get_save_directory()):
+                os.makedirs(get_save_directory())
+            return get_save_directory()
         
