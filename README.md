@@ -289,7 +289,7 @@ This is the main function used to generate course completion certificates in PDF
 | `company_website`    | `str` | ❌ No     | A **company website URL** (e.g., `"https://github.com"`), shown on the back. |
           
 
-### 🎨 Customization Class Parameters
+### 🎨 EmpCardCustomization(Customization) Class Parameters
 This class handles appearance-level customizations for Employee ID Cards like templates, logos, fonts, and output paths.
 
 | Parameter             | Type   | Required | Description                                                                                                                           |
