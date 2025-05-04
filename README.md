@@ -116,7 +116,7 @@ designation = "Software Engineer"
 dob = "15/04/2000"
 phone = "+91 2345678900"
 email = "madhanreigns312@gmail.com"
-join_date = "21/03/2022" #date(2020, 1, 1),
+join_date = "21/03/2022"
 
 #Company detailes
 company_name="XYZ Enterprises"
@@ -132,7 +132,7 @@ id1=EmployeeIDCardGenerator(
         designation=designation,
         phone=phone,
         email=email,
-        join_date=datetime.strptime(join_date, "%d/%m/%Y"),
+        join_date=join_date,
         emegency_number="1234567890", #None
     ),
     company=CompanyInfo(
@@ -192,7 +192,7 @@ id1=EmployeeIDCardGenerator(
         phone=phone,
         email=email,
         department="IT",
-        profile_pic_path= "D:\\Custom\\Pictures\\profile.png",
+        profile_pic_path= "D:\\Custom\\Pictures\\profile.png",#use sqaure shaped images (320p*320p)
         join_date=join_date,
         emegency_number="1234567890",
         blood_group="M+ve",
@@ -271,7 +271,7 @@ This is the main function used to generate course completion certificates in PDF
 | **email**              | `str` | ✅        | Email address issued to the employee by the organization.                              |
 | **department**         | `str` | ❌        | Department the employee belongs to (e.g., `"Engineering"`). Optional.                  |
 | **join\_date**         | `str` | ❌        | Date of joining in the organization (e.g., `"21-03-2022"`). Optional.                  |
-| **profile\_pic\_path** | `str` | ❌        | Path to the employee's profile picture (JPG/PNG). Optional. Defaults to a placeholder. |
+| **profile\_pic\_path** | `str` | ❌        | Path to the employee's profile picture (JPG/PNG). Optional. Defaults to a placeholder. #use sqaure shaped images (320p*320p) |
 | **emegency\_number**   | `str` | ❌        | Emergency contact number of the employee. Optional.                                    |
 | **blood\_group**       | `str` | ❌        | Blood group of the employee (e.g., `"O+`, `"B-"`). Optional.                           |
 
