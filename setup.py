@@ -3,7 +3,7 @@ setup(
     name="instacerty",
     version="2.0.0",
     description="A python package for generate your certificates/ID cards instantly!",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     author="Madhanraj",
     author_email="madhanreigns312@gmail.com",
