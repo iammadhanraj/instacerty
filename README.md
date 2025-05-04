@@ -303,6 +303,8 @@ This class handles appearance-level customizations for Employee ID Cards like te
 | **display\_elements** | `dict` | ❌        | Dictionary to show/hide logos, barcode, etc. See **🧩 display_elements**. Defaults to all elements shown. |
 | **output\_directory** | `str`  | ❌        | Path to save the generated ID card images. Defaults to current working directory.                                                     |
 
+#### 📝 Create Own Templates(Front, Back)
+Download and Use this [Template](https://raw.githubusercontent.com/iammadhanraj/mystaticfiles/main/InstaCerty/Instacerty_Employee_ID_Card_Template.psd) for create your own templates front and back side, use [photopea](https://www.photopea.com/)(Free) or Photoshop to edit this template
 
 #### 🧩 display_elements (dict, optional)
 This dictionary allows fine-grained control over visibility of visual elements on the ID card. Each key controls a specific element's display on either the front or back of the card.
@@ -373,6 +375,6 @@ For any issues, please create a GitHub Issue
 
 Developed and maintained by [@iammadhanraj](https://github.com/iammadhanraj)
 
-**Thanks:** I formated Readme file from : [readme.so](https://readme.so/editor) 
+**Thanks:** [ChatGPT](https://chatgpt.com/) and [readme.so](https://readme.so/editor) 
 
 
